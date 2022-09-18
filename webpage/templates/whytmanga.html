@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load custom_tags %}
+    {% load embed_video_tags %}
+    {% video item.video 'medium' %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/jquery-ui.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link href="../static/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+      <div class="py-2 bg-light">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-lg-9 d-none d-lg-block">
+                  </div>
+                  <div class="col-lg-3 text-right">
+                      {% if user.is_authenticated %}
+                      <span style="color: #d9304f;font-size: 16px;margin-right:3px">Hello, {{request.user}}</span>
+                      <a href="{% url 'logout' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-lock" style="color: #1b3f28"></span> Log Out</a>
+                      {% else %}
+                      <a href="{% url 'login' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-unlock-alt" style="color: #1b3f28"></span> Log In</a>
+                      <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+      </div>
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+              <a href="{% url 'index' %}" class="d-block">
+              <img src="../static/images/logo.jpg" alt="Image" class="img-fluid">
+            </a>
+          </div>
+          <div class="mr-auto">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+                  <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                      <li>
+                          <a href="{% url 'index' %}" class="nav-link text-left">Home</a>
+                      </li>
+                      <li class="active">
+                          <a href="{% url 'courses' %}" class="nav-link text-left">Courses</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
+                      </li>
+                  </ul>                                                                                                                                                                                                                                                                                          </ul>
+              </nav>
+
+          </div>
+          <div class="ml-auto">
+            <div class="social-wrap">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+
+    </header>
+
+    
+    <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../static/images/bg_1.jpg')">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-7">
+              <h2 class="mb-0" style="margin-top:50px">Anime-Style Animation</h2>
+            </div>
+          </div>
+        </div>
+      </div> 
+    
+
+    <div class="custom-breadcrumns border-bottom">
+      <div class="container">
+          <a href="{% url 'index' %}">Home</a>
+          <span class="mx-3 icon-keyboard_arrow_right"></span>
+          <a href="{% url 'courses' %}">Courses</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Anime-Style Animation</span>
+      </div>
+    </div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div>
+                        {% block content %}
+                        {% for v in videos %}
+                        {% video v.url '480x360' %}
+                        {% endfor %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col-lg-5 ml-auto align-self-center">
+                        <h2 class="section-title-underline mb-5">
+                            <span>Course Details</span>
+                        </h2>
+                        
+                        <p><strong class="text-black d-block">Video Host: </strong> Odunze Whyte Oguguo</p>
+                        <p class="mb-5"><strong class="text-black d-block">Video Duration:</strong> 65 minutes</p>
+                        <p>Want to learn how to animate in Clip Studio Paint?</p>
+                        <p>Course recommendations to follow along:</p>
+    
+                        <ul class="ul-check primary list-unstyled mb-5">
+                            <li>Any Clip Studio Paint Version above 1.5.11</li>
+                            <li>A digital pen/digital tablet with/without a screen display </li>
+                            <li>Basic knowledge of animation ( See <a href="{% anchor 'courses' '2d_animation' %}" style="color: #d9304f">12 principles of animation</a>)</li>
+                        </ul>
+
+
+
+                    </div>
+                <div style="margin-top:50px;">
+                    <h2 class="section-title-underline mb-5">
+                        <span>What is anime style animation?</span>
+                    </h2>
+                <p>In Japanese, the term anime is used to refer to all animated works, regardless of style or origin. English-language dictionaries typically define anime (/ˈænɪmeɪ/) as "a style of Japanese animation" or as "a style of animation originating in Japan".</p>
+                </div>
+
+                <div style="margin: 50px 0px">
+                    <h2 class="section-title-underline mb-5">
+                        <span>What makes anime so unique?</span>
+                    </h2>
+                    <p>In Japanese, the term anime is used to refer to all animated works, regardless of style or origin. English-language dictionaries typically define anime (/ˈænɪmeɪ/) as "a style of Japanese animation" or as "a style of animation originating in Japan".</p>
+                    <br><br>
+                    <h4 class="section-title-underline mb-5">
+                        <span>1. COMPLEX PLOTS</span>
+                    </h4>
+                    <div class="col-md-6 mb-4" style="float:right;margin-left:50px">
+                        <p>
+                            <img src="../static/images/complexplots.jpg" alt="Image" class="img-fluid">
+                        </p>
+                    </div>
+                        <p>One of anime’s distinctive features is the type of plots in which it appears. These plots tend to be far more complex than the plots of regular animated cartoons or many other animated projects. For instance, an anime plot typically develops over the course of dozens of episodes, and a single storyline can take more than 50 episodes to fully develop.
+
+                            In addition to complex plots, anime characters are often complex themselves. Other types of animation allow for characters in which only one or two personality traits are developed and emphasized. Anime character design, however, frequently develops characters that possess many layers. This art form develops these layers and personality traits in order to present a multi-faceted person. In addition, there are also often many main characters in a storyline. The result of these features is a rich field of fascinating characters that interact to tell a lengthy story.</p>
+                    <h4 class="section-title-underline mb-5">
+                        <span>2. ADULT FOCUS</span>
+                    </h4>
+
+                    <p>As with any form of animation, people of all ages can enjoy anime, and there are anime projects that are specially designed for children. However, because of the nature of the plots in anime, this form of animation is often best understood and enjoyed by adults instead of children. For instance, the lengthy plots require viewers to maintain interest in the storyline over the long term, and the complex characters require viewers to be able to both understand and engage with that complexity.
+
+                        Anime storylines are also often focused on adult themes. While one of the many appealing characteristics of animation in general is its ability to appeal and be tailored to a wide range of people, anime often focuses on adult themes. Even when anime incorporates humor (which it often does), the humor is frequently used to alleviate a darker or more violent theme that is suitable primarily for adult viewing.</p>
+                    <h4 class="section-title-underline mb-5">
+                        <span>3. EXAGGERATED PHYSICAL FEATURES</span>
+                    </h4>
+                    <div class="col-md-6 mb-4" style="float:left;margin-right:50px">
+                        <p>
+                            <img src="../static/images/Lfromdeathnote.jpg" alt="Image" class="img-fluid">
+                        </p>
+                    </div>
+                    <p>One of the most distinctive characteristics of anime resides in the characters’ faces. While anime characters may possess bodies with relatively proportional body parts, the heads, hair, and facial expressions are usually exaggerated and brightly colored. In fact, most of anime’s exaggerated elements occur in regards to the faces, actions, expressions, and colors used.
+
+                        The most prominent physical exaggeration typically occurs in the characters’ eyes. These eyes are huge and can take up almost half of the character’s face. They also possess other distinct features, such as a slope, black centers, and a colored outside edge. These large eyes provide an effective outlet through which the animator can reveal the characters’ emotions.
+
+                        In addition to large eyes, there are a number of other physical features that distinguish anime from other types of animation. The characters often possess abundant, wild, and unnaturally colored hair. In addition, the heads on anime characters are often very large. Other body parts may be drawn larger than typical human proportions would require (such as arms or legs), depending upon what the animator is trying to convey about the character.
+
+                        The characters’ facial expression and actions are also often exaggerated. For instance, large teardrops are standard depictions of embarrassment or other distress. The character drawing a hammer with which to strike another character may introduce comedic relief. The goal of all of these physical characteristics and exaggerated elements is to depict the inner life of the person on the screen. The personality and emotions of the character are the driving force behind the specifics of the design. For instance, the animator will focus more on creating a look for a character that reflects that character’s personality than they will on creating a realistic look.</p>
+                </div>
+                <p>
+                    <a href="{% url 'courses' %}" class="btn btn-primary rounded-0 btn-lg px-5">Back to courses</a>
+                    {% if user.is_authenticated %}
+                    <a href="#" class="btn btn-primary rounded-0 btn-lg px-5" style="margin-left:200px" onclick="mark()">Mark as finished</a>
+                    {% endif %}
+                </p>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3">
+            <p class="mb-4"><img src="../static/images/logo.png" alt="Image" class="img-fluid"></p>
+          </div>
+            <div class="col-lg-3">
+                <h3 class="footer-heading"><span>Update Us</span></h3>
+                <p>Help us keep in touch with new updates and crazes by contacting us with your new addition ides.</p>
+                <p><a href="{% url 'contact' %}">Submit Contact Info</a></p>
+            </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Our Course Categories</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="{% anchor 'courses' '2d_animation' %}">2D Animation</a></li>
+                  <li><a href="{% anchor 'courses' '2d_painting' %}">2D Painting</a></li>
+                  <li><a href="{% anchor 'courses' 'photoedit' %}">2D Photo Editing</a></li>
+                  <li><a href="{% anchor 'courses' '3dsculpt' %}">3D Sculpting</a></li>
+                  <li><a href="{% anchor 'courses' '3drigging' %}">3D Rigging</a></li>
+              </ul>
+          </div>
+        </div>
+  </div>
+    </div>
+  </div>
+  <!-- .site-wrap -->
+
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
+
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/jquery-ui.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.stellar.min.js"></script>
+  <script src="../static/js/jquery.countdown.min.js"></script>
+  <script src="../static/js/bootstrap-datepicker.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/jquery.sticky.js"></script>
+  <script src="../static/js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+  <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

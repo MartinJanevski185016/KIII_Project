@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load custom_tags %}
+    {% load embed_video_tags %}
+    {% video item.video 'medium' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/jquery-ui.css">
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="../static/css/aos.css">
+    <link href="../static/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <div class="py-2 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9 d-none d-lg-block">
+                </div>
+                <div class="col-lg-3 text-right">
+                    {% if user.is_authenticated %}
+                    <span style="color: #d9304f;font-size: 16px;margin-right:3px">Hello, {{request.user}}</span>
+                    <a href="{% url 'logout' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-lock" style="color: #1b3f28"></span> Log Out</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-unlock-alt" style="color: #1b3f28"></span> Log In</a>
+                    <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <div class="site-logo">
+                    <a href="{% url 'index' %}" class="d-block">
+                        <img src="../static/images/logo.jpg" alt="Image" class="img-fluid">
+                    </a>
+                </div>
+                <div class="mr-auto">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li>
+                                <a href="{% url 'index' %}" class="nav-link text-left">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="{% url 'courses' %}" class="nav-link text-left">Courses</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
+                            </li>
+                        </ul>                                                                                                                                                                                                                                                                                          </ul>
+                    </nav>
+
+                </div>
+                <div class="ml-auto">
+                    <div class="social-wrap">
+                        <a href="#"><span class="icon-facebook"></span></a>
+                        <a href="#"><span class="icon-twitter"></span></a>
+                        <a href="#"><span class="icon-linkedin"></span></a>
+
+                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                                class="icon-menu h3"></span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+
+    <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../static/images/bg_1.jpg')">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-7">
+                    <h2 class="mb-0" style="margin-top:50px">Walk Cycles</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="custom-breadcrumns border-bottom">
+        <div class="container">
+            <a href="{% url 'index' %}">Home</a>
+            <span class="mx-3 icon-keyboard_arrow_right"></span>
+            <a href="{% url 'courses' %}">Courses</a>
+            <span class="mx-3 icon-keyboard_arrow_right"></span>
+            <span class="current">Walk Cycles</span>
+        </div>
+    </div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div>
+                        {% block content %}
+                        {% for v in videos %}
+                        {% video v.url '480x360' %}
+                        {% endfor %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col-lg-5 ml-auto align-self-center">
+                    <h2 class="section-title-underline mb-5">
+                        <span>Course Details</span>
+                    </h2>
+
+                    <p><strong class="text-black d-block">Video Host: </strong> ModernDayJames</p>
+                    <p class="mb-5"><strong class="text-black d-block">Video Duration:</strong>12 minutes</p>
+                    <p>Want to understand the basic animation exercise of creating a walk cycle?</p>
+                    <p>Course recommendations to follow along:</p>
+
+                    <ul class="ul-check primary list-unstyled mb-5">
+                        <li>Any 2D animation software</li>
+                        <li>A digital pen/digital tablet with/without a screen display.</li>
+                        <li>Basic knowledge of animation ( See <a href="{% anchor 'courses' '2d_animation' %}" style="color: #d9304f">12 principles of animation</a>)</li>
+                    </ul>
+
+
+
+                </div>
+                <div style="margin-top:50px;">
+                    <h2 class="section-title-underline mb-5">
+                        <span>What is a walk cycle?</span>
+                    </h2>
+                    <p>In animation, a walk cycle is a series of frames or illustrations drawn in sequence that loop to create an animation of a walking character. The walk cycle is looped over and over, thus having to avoid animating each step again.</p>
+                </div>
+
+                <div style="margin: 50px 0px">
+                    <h2 class="section-title-underline mb-5">
+                        <span>Why is it important?</span>
+                    </h2>
+                    <p>To become more capable of depicting movement on a computer screen using your imagination, many animators recommend understanding and mastering the basic walk cycle as a form of training your arm muscles and mind-to-hand coordination.</p>
+                    <br><br>
+                    <h4 class="section-title-underline mb-5">
+                        <span>Creating a walk cycle</span>
+                    </h4>
+                    <div class="col-md-6 mb-4" style="float:right;margin-left:50px">
+                        <p>
+                            <img src="../static/images/profilewalkcycle.jpg" alt="Image" class="img-fluid">
+                        </p>
+                    </div>
+                    <p>Walk cycles can be broken up into four key frames: the forward contact point, the first passing pose, the back contact point, and the second passing pose. Frames that are drawn between these key poses (traditionally known as in-betweens) are either hand-drawn or interpolated using computer software.
+
+                        Besides the apparent move of the legs, many more details are necessary for a convincing walk cycle, like animation timing, movement of the arms, head and torsion of the whole body.There exist many techniques to create walk cycles. Traditionally, walk cycles are hand-drawn, but over time with the introduction of new technologies for new mediums, walk cycles can be made in pixel art, 2D computer graphics, 3D computer graphics, stop motion, and cut-out animation, or using techniques like rotoscoping.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <h4 class="section-title-underline mb-5">
+                        <span>1. Forward contact point. </span>
+                    </h4>
+
+                    <p>As with any form of animation, people of all ages can enjoy anime, and there are anime projects that are specially designed for children. However, because of the nature of the plots in anime, this form of animation is often best understood and enjoyed by adults instead of children. For instance, the lengthy plots require viewers to maintain interest in the storyline over the long term, and the complex characters require viewers to be able to both understand and engage with that complexity.
+
+                        Anime storylines are also often focused on adult themes. While one of the many appealing characteristics of animation in general is its ability to appeal and be tailored to a wide range of people, anime often focuses on adult themes. Even when anime incorporates humor (which it often does), the humor is frequently used to alleviate a darker or more violent theme that is suitable primarily for adult viewing.</p>
+                   <br>
+                    <br>
+                    <h4 class="section-title-underline mb-5" >
+                        <span>2. First passing pose. </span>
+                    </h4>
+                    <div class="col-md-6 mb-4" style="float:left;margin-right:50px">
+                        <p>
+                            <img src="../static/images/walkingbaboon.jpg" alt="Image" class="img-fluid">
+                        </p>
+                    </div>
+                    <p>The passing pose is the moment one leg passes the other. Here, the front foot is on the ground, while the back foot is raised striding forwards. It should be a reverse of your forward contact point, as your character shifts their weight into the opposite leg ahead of moving onwards. </p>
+                    <br>
+                    <br>
+                    <br>
+                    <h4 class="section-title-underline mb-5">
+                        <span>3. Back contact point.  </span>
+                    </h4>
+
+                   <p>At this point, the position of your character’s legs should have reversed. Now the back leg is planted firmly on the ground, out in front. The front leg, meanwhile, is raised off the ground, towards the back of the body.
+
+                   </p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <h4 class="section-title-underline mb-5">
+                    <span>4. Second passing pose.  </span>
+                </h4>
+
+                <p>The initial cycle completes as your character transitions into the second passing pose. Here, the original front foot moves back to the front. The original back foot returns to the rear. The two legs crossover, ending in the same place as the sketch in step one began.
+
+                </p>
+            </div>
+            <br>
+            <br>
+            <br>
+                <p>
+                    <a href="{% url 'courses' %}" class="btn btn-primary rounded-0 btn-lg px-5">Back to courses</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'courses' %}" class="btn btn-primary rounded-0 btn-lg px-5" style="margin-left:200px">Mark as finished</a>
+                    {% endif %}
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <p class="mb-4"><img src="../static/images/logo.png" alt="Image" class="img-fluid"></p>
+                </div>
+                <div class="col-lg-3">
+                    <h3 class="footer-heading"><span>Update Us</span></h3>
+                    <p>Help us keep in touch with new updates and crazes by contacting us with your new addition ides.</p>
+                    <p><a href="{% url 'contact' %}">Submit Contact Info</a></p>
+                </div>
+                <div class="col-lg-3">
+                    <h3 class="footer-heading"><span>Our Course Categories</span></h3>
+                    <ul class="list-unstyled">
+                        <li><a href="{% anchor 'courses' '2d_animation' %}">2D Animation</a></li>
+                        <li><a href="{% anchor 'courses' '2d_painting' %}">2D Painting</a></li>
+                        <li><a href="{% anchor 'courses' 'photoedit' %}">2D Photo Editing</a></li>
+                        <li><a href="{% anchor 'courses' '3dsculpt' %}">3D Sculpting</a></li>
+                        <li><a href="{% anchor 'courses' '3drigging' %}">3D Rigging</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .site-wrap -->
+
+<!-- loader -->
+<div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
+
+<script src="../static/js/jquery-3.3.1.min.js"></script>
+<script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../static/js/jquery-ui.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/owl.carousel.min.js"></script>
+<script src="../static/js/jquery.stellar.min.js"></script>
+<script src="../static/js/jquery.countdown.min.js"></script>
+<script src="../static/js/bootstrap-datepicker.min.js"></script>
+<script src="../static/js/jquery.easing.1.3.js"></script>
+<script src="../static/js/aos.js"></script>
+<script src="../static/js/jquery.fancybox.min.js"></script>
+<script src="../static/js/jquery.sticky.js"></script>
+<script src="../static/js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+<script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

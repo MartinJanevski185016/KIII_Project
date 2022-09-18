@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load custom_tags %}
+{% load embed_video_tags %}
+{% video item.video 'medium' %}
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+
+  <link rel="stylesheet"  href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/jquery-ui.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link href="../static/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="../static/css/style.css">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap">
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+
+  <div class="py-2 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-9 d-none d-lg-block">
+        </div>
+        <div class="col-lg-3 text-right">
+          {% if user.is_authenticated %}
+          <span style="color: #d9304f;font-size: 16px;margin-right:3px">Hello, {{request.user}}</span>
+          <a href="{% url 'logout' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-lock" style="color: #1b3f28"></span> Log Out</a>
+          {% else %}
+          <a href="{% url 'login' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-unlock-alt" style="color: #1b3f28"></span> Log In</a>
+          <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <div class="site-logo">
+          <a href="{% url 'index' %}" class="d-block">
+            <img src="../static/images/logo.jpg" alt="Image" class="img-fluid">
+          </a>
+        </div>
+        <div class="mr-auto">
+          <nav class="site-navigation position-relative text-right" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+              <li>
+                <a href="{% url 'index' %}" class="nav-link text-left">Home</a>
+              </li>
+              <li class="active">
+                <a href="{% url 'courses' %}" class="nav-link text-left">Courses</a>
+              </li>
+              <li>
+                <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
+              </li>
+            </ul>                                                                                                                                                                                                                                                                                          </ul>
+          </nav>
+
+        </div>
+        <div class="ml-auto">
+          <div class="social-wrap">
+            <a href="#"><span class="icon-facebook"></span></a>
+            <a href="#"><span class="icon-twitter"></span></a>
+            <a href="#"><span class="icon-linkedin"></span></a>
+
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                    class="icon-menu h3"></span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+
+  <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../static/images/bg_1.jpg')">
+    <div class="container">
+      <div class="row align-items-end">
+        <div class="col-lg-7">
+          <h2 class="mb-0" style="margin-top:50px">Find your Art Style</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="custom-breadcrumns border-bottom">
+    <div class="container">
+      <a href="{% url 'index' }">Home</a>
+      <span class="mx-3 icon-keyboard_arrow_right"></span>
+      <a href="{% url 'courses' }">Courses</a>
+      <span class="mx-3 icon-keyboard_arrow_right"></span>
+      <span class="current">Find your Art Style</span>
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div>
+            {% block content %}
+            {% for v in videos %}
+            {% video v.url '480x360' %}
+            {% endfor %}
+            {% endblock %}
+          </div>
+        </div>
+        <div class="col-lg-5 ml-auto align-self-center">
+          <h2 class="section-title-underline mb-5">
+            <span>Course Details</span>
+          </h2>
+
+          <p><strong class="text-black d-block">Video Host: </strong> Ethan Becker</p>
+          <p class="mb-5"><strong class="text-black d-block">Video Duration:</strong>16 minutes</p>
+          <p>Want to hear artist Ethan Becker's take on art styles?</p>
+          <p>Course recommendations to follow along:</p>
+
+          <ul class="ul-check primary list-unstyled mb-5">
+            <li>Basic knowledge of art principles.</li>
+            <li>Any art medium you want.</li>
+          </ul>
+
+
+
+        </div>
+        <div style="margin-top:50px;">
+          <h2 class="section-title-underline mb-5">
+            <span>How to Find Your Art Style</span>
+          </h2>
+
+          <p>One of the greatest challenges and opportunities in an artist’s career is discovering their artistic style. A signature style can make art memorable.
+
+          </p>
+        </div>
+
+        <div style="margin: 50px 0px">
+
+          <h4 class="section-title-underline mb-5">
+            <span>What Is an Art Style?</span>
+          </h4>
+          <div class="col-md-6 mb-4" style="float:right;margin-left:50px">
+            <p>
+              <img src="../static/images/bizzarro.jpeg" alt="Image" class="img-fluid">
+            </p>
+          </div>
+          <p>
+            An art style is a throughline that characterizes a grouping of art. Generally, an art style is defined by a specific element that an artist has incorporated into all of their work.
+            Developing your own artistic style requires a significant amount of time and focus. You can begin to understand and develop your unique art style by studying art history at large and more specifically, your favorite type of art, and identifying the artists you like. Doing so will not only help you create a cohesive body of art, but it can also help with your technical skill.
+            Different artists have unique styles, which can vary by medium and message. Whether you are a watercolor painter, documentary filmmaker, anime or manga artist, or printmaker, developing a quintessential personal style makes your work noticeable.
+          </p>
+          <br>
+          <br>
+          <br>
+          <h4 class="section-title-underline mb-5">
+            <span>How to Determine Your Medium </span>
+          </h4>
+
+          <p>Before you can develop your unique art style, you must first know what medium you will use to convey your thoughts and expression.
+            An art medium is the method in which you make art. This can consist of fine art, such as painting and sculpture, or performance arts, such as dance, acting, music, and writing. You can even get more specific within those categories. For example, if you focus on painting, you may choose to make acrylic paintings instead of oil paintings. Other art styles include architecture, filmmaking, sewing, and more. There is no set way to find your medium.
+
+            Once you have chosen your main artistic medium, you can then play around and figure out your specific style within that lane of artistic expression.</p>
+          <br>
+          <br>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <p>
+        <a href="{% url 'courses' }" class="btn btn-primary rounded-0 btn-lg px-5">Back to courses</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'courses' %}" class="btn btn-primary rounded-0 btn-lg px-5" style="margin-left:200px">Mark as finished</a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-3">
+        <p class="mb-4"><img src="../static/images/logo.png" alt="Image" class="img-fluid"></p>
+      </div>
+      <div class="col-lg-3">
+        <h3 class="footer-heading"><span>Update Us</span></h3>
+        <p>Help us keep in touch with new updates and crazes by contacting us with your new addition ides.</p>
+        <p><a href="{% url 'contact' }">Submit Contact Info</a></p>
+      </div>
+      <div class="col-lg-3">
+        <h3 class="footer-heading"><span>Our Course Categories</span></h3>
+        <ul class="list-unstyled">
+          <li><a href="{% anchor 'courses' '2d_animation' %}">2D Animation</a></li>
+          <li><a href="{% anchor 'courses' '2d_painting' %}">2D Painting</a></li>
+          <li><a href="{% anchor 'courses' 'photoedit' %}">2D Photo Editing</a></li>
+          <li><a href="{% anchor 'courses' '3dsculpt' %}">3D Sculpting</a></li>
+          <li><a href="{% anchor 'courses' '3drigging' %}">3D Rigging</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- .site-wrap -->
+
+<!-- loader -->
+<div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
+
+<script src="../static/js/jquery-3.3.1.min.js"></script>
+<script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../static/js/jquery-ui.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/owl.carousel.min.js"></script>
+<script src="../static/js/jquery.stellar.min.js"></script>
+<script src="../static/js/jquery.countdown.min.js"></script>
+<script src="../static/js/bootstrap-datepicker.min.js"></script>
+<script src="../static/js/jquery.easing.1.3.js"></script>
+<script src="../static/js/aos.js"></script>
+<script src="../static/js/jquery.fancybox.min.js"></script>
+<script src="../static/js/jquery.sticky.js"></script>
+<script src="../static/js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+<script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

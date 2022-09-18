@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load custom_tags %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/jquery-ui.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link href="../static/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="../static/css/style.css">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <div class="py-2 bg-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-9 d-none d-lg-block">
+          </div>
+            <div class="col-lg-3 text-right">
+                {% if user.is_authenticated %}
+                <span style="color: #d9304f;font-size: 16px;margin-right:3px">Hello, {{request.user}}</span>
+                <a href="{% url 'logout' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-lock" style="color: #1b3f28"></span> Log Out</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="small mr-3" style="color: #1b3f28"><span class="icon-unlock-alt" style="color: #1b3f28"></span> Log In</a>
+                <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+                {% endif %}
+            </div>
+        </div>
+      </div>
+    </div>
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+            <a href="{% url 'index' %}" class="d-block">
+              <img src="../static/images/logo.jpg" alt="Image" class="img-fluid">
+            </a>
+          </div>
+          <div class="mr-auto">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+                  <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                      <li>
+                          <a href="{% url 'index' %}" class="nav-link text-left">Home</a>
+                      </li>
+                      <li class="active">
+                          <a href="{% url 'courses' %}" class="nav-link text-left">Courses</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
+                      </li>
+                  </ul>                                                                                                                                                                                                                                                                                          </ul>
+              </nav>
+
+          </div>
+          <div class="ml-auto">
+            <div class="social-wrap">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+
+    </header>
+
+    
+    <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../static/images/bg_1.jpg')">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-7">
+              <h2 class="mb-0" style="margin-top:50px" >Courses</h2>
+                <p> Browse through our various courses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="custom-breadcrumns border-bottom">
+      <div class="container">
+          <a href="{% url 'index' %}">Home</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Courses</span>
+      </div>
+    </div>
+      <div id="courses" class="site-section">
+          <div class="container">
+              <div class="row mb-5 justify-content-center text-center">
+                  <div class="col-lg-4 mb-5">
+                      <h2  class="section-title-underline mb-5">
+                          <span>2D Courses</span>
+                      </h2>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+
+                      <div class="feature-1 border">
+                          <div class="icon-wrapper bg-primary">
+                              <span class="flaticon-book text-white"></span>
+                          </div>
+                          <div class="feature-1-content">
+                              <h2>2D Animation</h2>
+                              <p>From the basics of animating to animation styles and techniques, this category has all you need!</p>
+                              <p><a href="#2d_animation" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                      <div class="feature-1 border">
+                          <div class="icon-wrapper bg-primary">
+                              <span class="flaticon-ink text-white"></span>
+                          </div>
+                          <div class="feature-1-content">
+                              <h2>Digital Painting</h2>
+                              <p>Start at the basics of digital painting and advance to complex concept art methods such as photobashing!</p>
+                              <p><a href="#2d_painting" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                  <div class="feature-1 border">
+                      <div class="icon-wrapper bg-primary">
+                          <span class="flaticon-library text-white"></span>
+                      </div>
+                      <div class="feature-1-content">
+                          <h2>2D Photo editing</h2>
+                          <p>Learn the newest and coolest ways to edit photos using Photoshop and other simmilar softwares!</p>
+                          <p><a href="#photoedit" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                      </div>
+                  </div>
+              </div>
+              </div>
+
+          </div>
+      </div>
+      <div class="site-section">
+          <div class="container">
+              <div class="row mb-5 justify-content-center text-center">
+                  <div class="col-lg-4 mb-5">
+                      <h2 class="section-title-underline mb-5">
+                          <span>3D Courses</span>
+                      </h2>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+
+                      <div class="feature-1 border">
+                          <div class="icon-wrapper bg-primary">
+                              <span class="flaticon-school-material text-white"></span>
+                          </div>
+                          <div class="feature-1-content">
+                              <h2>3D Sculpting</h2>
+                              <p>Learn how to sculpt your own character from scratch using various tools like Zbrush!</p>
+                              <p><a href="#3dsculpt" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                      <div class="feature-1 border">
+                          <div class="icon-wrapper bg-primary">
+                              <span class="flaticon-blackboard text-white"></span>
+                          </div>
+                          <div class="feature-1-content">
+                              <h2>3D Rigging</h2>
+                              <p>Understand what rigging means and how to rig 3D models, which can be used in making movies and games!</p>
+                              <p><a href="#3drigging" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                      <div class="feature-1 border">
+                          <div class="icon-wrapper bg-primary">
+                              <span class="flaticon- text-white"></span>
+                          </div>
+                          <div class="feature-1-content">
+                              <h2>Your Suggestion?</h2>
+                              <p>Notify us! <br> What new course category should we add?</p>
+                              <p><a href="{% url 'contact' %}" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div id="2d_animation" class="section-bg style-1" style="background-image: url('../static/images/hero_1.jpg');">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4">
+                      <h2 class="section-title-underline style-2" >
+                          <span>2D Animation</span>
+                      </h2>
+                  </div>
+                  <div class="col-lg-8">
+                      <p class="lead">What is 2D animation?</p>
+                      <p>2D animation is the art of creating movement in a two-dimensional space. This includes characters, creatures, FX, and backgrounds.
+
+                          The illusion of movement is created when individual drawings are sequenced together over time. One second of time is usually divided into 24 frames. Depending on the style of animation there can be as many as 24 unique drawings in one second of animation (24fps) or as little as two. Conventionally animation is done on "2s" meaning there is a drawing every 2 frames (12fps). This allows artists to save on production time/costs and gives 2D animation its unique look.
+
+                          While this process is sometimes referred to as traditional animation, mainstream 2D production has evolved from hand drawn processes using pencil and paper to the implementation of digital techniques using computer software like Toon Boom Harmony or Adobe After Effects.</p>
+                      <p><a href="#courses" class="btn btn-primary rounded-0 px-4">Back to Categories</a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                        <a href="{% url 'whytmanga' %}"><img src="../static/images/cspanimate.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">NEW!</div>
+                        <div class="category"><h3>Anime-Style Animation</h3></div>
+
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How to animate using Clip Studio Paint for beginners. Good for newbies who love anime!</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Brought to us by WhytManga on YouTube: How to animate like a MANGA pro! </p>
+                        <p><a href="{% url 'whytmanga' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                                <a href="{% url 'walk_cycles' %}"><img src="../static/images/12_principles.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="category"><h3>Walk Cycles</h3></div>
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>The basic walking animation.</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">This course goes through the basic walking animation every animator needs to master!</p>
+                        <p><a href="{% url 'walk_cycles' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                                <a href="{% url 'squash&stretch' %}"><img src="../static/images/squash&stretch.jpg" alt="Image" class="img-fluid"></a>
+                            <div class="price">BASICS!</div>
+                        <div class="category"><h3>Squash & Stretch</h3></div>
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>12 Principles of Animation</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">The first and most basic animation principle.</p>
+                        <p><a href="{% url 'squash&stretch' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+      <div id="2d_painting" class="section-bg style-1" style="background-image: url('../static/images/hero_1.jpg');">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4">
+                      <h2 class="section-title-underline style-2" >
+                          <span>Digital Painting</span>
+                      </h2>
+                  </div>
+                  <div class="col-lg-8">
+                      <p class="lead">What is 2D Painting?</p>
+                      <p>2D painting or more famously known-digital painting is a relatively new but an already established art medium. It’s a medium that typically combines a computer, a graphics tablet, and software of choice. The artist uses painting and drawing techniques with the stylus that comes with the graphics tablet to create 2D paintings within a digital art software. There are multiple techniques and tools that are utilized by digital artists, the first being digital brushes. These come standard with all digital art programs but users can create their own, altering their shape, texture, size, and transfer. Many of these brushes are created to represent traditional styles like oils, acrylics, pastels, charcoal, and airbrushing, but not all.[4] Other effective tools include layers, lasso tools, shapes, and masks. Digital painting has evolved to not just mimic traditional art styles but fully become its own technique.</p>
+                      <p><a href="#courses" class="btn btn-primary rounded-0 px-4">Back to Categories</a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="site-section">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="course-1-item">
+                          <figure class="thumnail">
+                              <a href="{% url 'digitalpainting' %}"><img src="../static/images/digipainting.jpeg" alt="Image" class="img-fluid"></a>
+                              <div class="category"><h3>Digital Painting Process</h3></div>
+
+                          </figure>
+                          <div class="course-1-content pb-4">
+                              <h2>A different take on digital art.</h2>
+                              <div class="rating text-center mb-3">
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                              </div>
+                              <p class="desc mb-4">Sam Does Arts on YouTube teaches us his way of painting a peace start to finish! </p>
+                              <p><a href="{% url 'digitalpainting' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="course-1-item">
+                          <figure class="thumnail">
+                              <a href="{% url 'photobashing' %}"><img src="../static/images/photobashing.jpeg" alt="Image" class="img-fluid"></a>
+                              <div class="price">NEW!</div>
+                              <div class="category"><h3>Photobashing for newbies!</h3></div>
+                          </figure>
+                          <div class="course-1-content pb-4">
+                              <h2>How to cheat at painting complicated backgrounds.</h2>
+                              <div class="rating text-center mb-3">
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                              </div>
+                              <p class="desc mb-4">Iman Awad shows us his way to create complex and detailed storyboard backgrounds!</p>
+                              <p><a href="{% url 'photobashing' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="course-1-item">
+                          <figure class="thumnail">
+                              <a href="{% url 'artstyle' %}"><img src="../static/images/artstyle.jpeg" alt="Image" class="img-fluid"></a>
+                              <div class="price">BASICS!</div>
+                              <div class="category"><h3>Find your art style!</h3></div>
+                          </figure>
+                          <div class="course-1-content pb-4">
+                              <h2>Self improvement and development</h2>
+                              <div class="rating text-center mb-3">
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                                  <span class="icon-star2 text-warning"></span>
+                              </div>
+                              <p class="desc mb-4">YouTube artist superstar Ethan Becker's way to find your art style in 3 simple steps.</p>
+                              <p><a href="{% url 'artstyle' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        </div>
+
+  <div id="photoedit" class="section-bg style-1" style="background-image: url('../static/images/hero_1.jpg');">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4">
+                  <h2 class="section-title-underline style-2" >
+                      <span>Photo editing</span>
+                  </h2>
+              </div>
+              <div class="col-lg-8">
+                  <p class="lead">What is photo editing?</p>
+                  <p>Photo editing is the act of altering an image. But that’s oversimplifying a subject that can be complex and employs different methods and tools.
+
+                      For example, some photo editing techniques are done manually, while others are conducted through automated software. Some photo editing is even done offline, on actual photographs, posters or other printed collateral.
+                      The photoshoot is only the first half of creating a great image. A skilled photo editor can take a good RAW image and use a myriad of techniques to create a stunning final photo. Post-processing can enhance what you did capture and create effects that aren’t always possible in the photography studio.</p>
+                  <p><a href="#courses" class="btn btn-primary rounded-0 px-4">Back to Categories</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="site-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'introphotoshop' %}"><img src="../static/images/introphotoshop.jpg" alt="Image" class="img-fluid"></a>
+                          <div class="price">BASICS!</div>
+                          <div class="category"><h3>Intro to Photoshop</h3></div>
+
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>The complete introduction to Photoshop.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">A fully comprehensive Adobe Photoshop intro course. </p>
+                          <p><a href="{% url 'introphotoshop' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'glowinthedark' %}"><img src="../static/images/glowinthedark.jpg" alt="Image" class="img-fluid"></a>
+                          <div class="price">NEW!</div>
+                          <div class="category"><h3>Glow in the dark effect!</h3></div>
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>Modifying basic photoshop effects.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">rafy A shows us how to make our photos glow in the dark!</p>
+                          <p><a href="{% url 'glowinthedark' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'imagebetter' %}"><img src="../static/images/quality.jpeg" alt="Image" class="img-fluid"></a>
+
+                          <div class="category"><h3>Make your image pop!</h3></div>
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>3 tips to better image quality</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">Justin Laurens gives us a few tips to get that perfect image with pro-camera quality.</p>
+                          <p><a href="{% url 'imagebetter' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+  <div id="3dsculpt" class="section-bg style-1" style="background-image: url('../static/images/hero_1.jpg');">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4">
+                  <h2 class="section-title-underline style-2" >
+                      <span>3D Sculpting</span>
+                  </h2>
+              </div>
+              <div class="col-lg-8">
+                  <p class="lead">What is 3D sculpting?</p>
+                  <p>3D sculpting(also called digital sculpting) is when an artist sculpts a 3D object on a computer with material similar to digitized clay. Software with brushes and tools that push, pull, pinch and smooth make it easy to create detailed sculpts that mimic real life textures and objects. There are multiple programs that allow artists to sculpt creations from either a base model or from scratch.
+
+                      They use complicated calculations to create detailed polygon meshes that act like real clay.
+
+                      An artist will begin with wide, broad manipulations—much like a traditional sculptor—and then move onto more detailed work by increasing the polygon count.
+
+                      A digital sculptor can take anywhere from 30 minutes to hundreds of hours on a project.
+
+                      The time spent sculpting depends on the complexity of the project and skill of the artist.</p>
+                  <p><a href="#courses" class="btn btn-primary rounded-0 px-4">Back to Categories</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="site-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'bestsculpt' %}"><img src="../static/images/introsculpt.jpg" alt="Image" class="img-fluid"></a>
+                          <div class="price">BASICS!</div>
+                          <div class="category"><h3>Sculpting software for beginners</h3></div>
+
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>Software for beginners.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">InspirationTuts on YouTube tells us the best software to start sculpting in. </p>
+                          <p><a href="{% url 'bestsculpt' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'blendersculpting' %}"><img src="../static/images/blendersculpt.jpg" alt="Image" class="img-fluid"></a>
+                          <div class="category"><h3>Sculpting in Blender!</h3></div>
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>How to sculpt using Blender.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">Ryan King Art helps us understand how to sculpt in Blender.</p>
+                          <p><a href="{% url 'blendersculpting' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'buyatablet' %}"><img src="../static/images/worthit.jpg" alt="Image" class="img-fluid"></a>
+
+                          <div class="category"><h3>Should you buy a tablet to sculpt?</h3></div>
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>A sculpting hardware comparison.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">FlippedNormals helps us define if that expensive digital tablet is worth it if you want to sculpt digitally.</p>
+                          <p><a href="{% url 'buyatablet' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="3drigging" class="section-bg style-1" style="background-image: url('../static/images/hero_1.jpg');">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4">
+                  <h2 class="section-title-underline style-2" >
+                      <span>3D Rigging</span>
+                  </h2>
+              </div>
+              <div class="col-lg-8">
+                  <p class="lead">What is 3D rigging?</p>
+                  <p>Rigging is a technique used in skeletal animation for representing a 3D character model using a series of interconnected digital bones.
+
+
+                      Specifically, rigging refers to the process of creating the bone structure of a 3D model. This bone structure is used to manipulate the 3D model like a puppet for animation.
+
+                      Pretty much anything can be rigged. A space ship, a soldier, a galaxy, a door, it doesn’t make any difference what the object is. Adding bones will allow any object to be animated freely.
+
+                      Rigging is most common in animated characters for games and movies. This technique simplifies the animation process and improves production efficiency. Once rigged with skeletal bones, any 3D object can be controlled and distorted as needed.
+
+                      In the entertainment industry rigging is a major step in the standard way of animating characters. Achieving smooth and complex animations is entirely dependent on the quality of the rigging phase in the animation pipeline.
+
+                      How Does Rigging Work?
+
+                      Rigging is one part of the larger animation process.
+
+                      After a 3D model has been created, a series of bones is constructed representing the skeletal structure. For instance, in a character there may be a group of back bones, a spine, and head bones.
+
+                      These bones can be transformed using digital animation software meaning their position, rotation, and scale can be changed.
+
+                      By recording these aspects of the bones along a timeline(using a process called keyframing) animations can be recorded.
+
+                      A basic setup may take a few hours or less while a complex rig for a movie could take days.</p>
+                  <p><a href="#courses" class="btn btn-primary rounded-0 px-4">Back to Categories</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="site-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'rigblender' %}"><img src="../static/images/rigging.jpg" alt="Image" class="img-fluid"></a>
+                          <div class="price">BASICS!</div>
+                          <div class="category"><h3>How to rig in Blender</h3></div>
+
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>Rigging for beginners.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">Blender shows us how to rig. </p>
+                          <p><a href="{% url 'rigblender' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="course-1-item">
+                      <figure class="thumnail">
+                          <a href="{% url 'rig3dsmax' %}"><img src="../static/images/3dsmax.jpg" alt="Image" class="img-fluid"></a>
+                          <div class="price">BASICS!</div>
+                          <div class="category"><h3>Rigging basics in 3DSMax!</h3></div>
+                      </figure>
+                      <div class="course-1-content pb-4">
+                          <h2>How to rig using 3DSMax.</h2>
+                          <div class="rating text-center mb-3">
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                              <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4">How to use 3DSMax to rig your models.</p>
+                          <p><a href="{% url 'rig3dsmax' %}" class="btn btn-primary rounded-0 px-4">Go to Course</a></p>
+                      </div>
+                  </div>
+              </div>
+
+      </div>
+
+  </div>
+      <div class="site-section ftco-subscribe-1" style="background-image: url('../static/images/bg_1.jpg'); background: #0c5460">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-lg-7">
+                      <h2>Subscribe to us!</h2>
+                      <p>Get mail notifications on brand new course updates!</p>
+                  </div>
+                  <div class="col-lg-5">
+                      <form action="" class="d-flex">
+                          <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
+                          <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="footer">
+          <div class="container">
+              <div class="row">
+
+                  <div class="col-lg-3">
+                      <p class="mb-4"><img src="../static/images/logo.png" alt="Image" class="img-fluid"></p>
+                  </div>
+                  <div class="col-lg-3">
+                      <h3 class="footer-heading"><span>Update Us</span></h3>
+                      <p>Help us keep in touch with new updates and crazes by contacting us with your new addition ides.</p>
+                      <p><a href="{% url 'contact' %}">Submit Contact Info</a></p>
+                  </div>
+                  <div class="col-lg-3">
+                      <h3 class="footer-heading"><span>Our Course Categories</span></h3>
+                      <ul class="list-unstyled">
+                          <li><a href="{% anchor 'courses' '2d_animation' %}">2D Animation</a></li>
+                          <li><a href="{% anchor 'courses' '2d_painting' %}">2D Painting</a></li>
+                          <li><a href="{% anchor 'courses' 'photoedit' %}">2D Photo Editing</a></li>
+                          <li><a href="{% anchor 'courses' '3dsculpt' %}">3D Sculpting</a></li>
+                          <li><a href="{% anchor 'courses' '3drigging' %}">3D Rigging</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- .site-wrap -->
+
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
+
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/jquery-ui.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.stellar.min.js"></script>
+  <script src="../static/js/jquery.countdown.min.js"></script>
+  <script src="../static/js/bootstrap-datepicker.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/jquery.sticky.js"></script>
+  <script src="../static/js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+  <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>
